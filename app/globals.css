@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+/* dark: variant driven by data-theme instead of the OS setting */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --paper: #f6f7f8;
+  --surface: #ffffff;
+  --ink: #18212d;
+  --muted: #566373;
+  --line: #d9dfe6;
+  --accent: #315f9d;
+  --accent-light: #e8f0fa;
+  --card-shadow: 0 2px 8px rgba(24,33,45,.035);
+  --card-shadow-hover: 0 10px 24px rgba(24,33,45,.07);
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #111923;
+  --surface: #192433;
+  --ink: #edf2f8;
+  --muted: #adbac9;
+  --line: #344255;
+  --accent: #9cc7ff;
+  --accent-light: #243a55;
+  --card-shadow: 0 2px 8px rgba(0,0,0,.12);
+  --card-shadow-hover: 0 10px 24px rgba(0,0,0,.25);
+}
+
+/* exposes the variables as utilities: bg-paper, text-muted, border-line, shadow-card... */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --shadow-card: var(--card-shadow);
+  --shadow-card-hover: var(--card-shadow-hover);
+  --font-sans: var(--font-dm-sans), Arial, sans-serif;
+  --font-mono: var(--font-dm-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+  :focus-visible { outline: 3px solid #5486c1; outline-offset: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
