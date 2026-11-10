@@ -12,11 +12,11 @@ export interface Project {
 // Replace these placeholders with the data your Flask app was passing in.
 export const projects: Project[] = [
   {
-    title: "Example project",
-    category: "Robotics",
+    title: "Tenkeyless Keyboard",
+    category: "Hardware, Firmware, and PCB Design",
     year: 2026,
     description: "A short description of what the project does and why.",
-    technologies: ["Python", "C++"],
+    technologies: ["Kicad", "JLCPCB", "QMK Firmware", "C"],
     projectUrl: "https://example.com",
     sourceUrl: "https://github.com/your-username/example",
   },

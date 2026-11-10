@@ -1,15 +1,13 @@
-"use client";
+import { cacheLife } from "next/cache";
 
-import { useEffect, useState } from "react";
+async function getCurrentYear() {
+  "use cache";
+  cacheLife("max");
+  return new Date().getUTCFullYear();
+}
 
-export default function Footer() {
-  // Starts with the build-time year so server and client markup match,
-  // then updates to the current year once the page loads in the browser.
-  const [year, setYear] = useState(() => new Date().getFullYear());
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+export default async function Footer() {
+  const year = await getCurrentYear();
 
   return (
     <footer className="flex min-h-[74px] items-center justify-between gap-[18px] border-t border-line text-[13px] text-muted max-[620px]:min-h-[88px] max-[620px]:flex-wrap max-[620px]:py-[17px]">
