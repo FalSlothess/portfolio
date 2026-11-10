@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/lib/projects";
+import { projects, type Project } from "../lib/projects";
 
 const eyebrow = "font-mono text-[13px] tracking-[0.025em] text-muted";
 const h2 = "text-[clamp(34px,4.5vw,48px)] font-semibold leading-[1.15] tracking-[-0.05em]";
